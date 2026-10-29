@@ -122,7 +122,7 @@ form.addEventListener("change", (event) => validateField(event.target));
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const fields = [...form.querySelectorAll("input, select, textarea")];
-  const valid = fields.every(validateField);
+  const valid = fields.map(validateField).every(Boolean);
   if (!valid) {
     form.querySelector(".invalid")?.focus();
     showToast("请检查并完善预约信息");
